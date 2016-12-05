@@ -1,0 +1,54 @@
+
+package javaapplication3;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+public class JavaApplication3 {
+
+     public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+ArrayList<String> states = new ArrayList();
+        states.add("0.Книга 1");
+        states.add("1.Книга 2");
+        states.add("2.Книга 3");
+        states.add("3.Книга 4");
+        states.add("4.Книга 5");
+        states.add("5.Книга 6");
+
+    while (true) {
+
+      System.out.print("Что нужно сделать:\n 1.Вывести список\n 2.Добавить книгу\n 3.Поиск Книги\n 4.Удалить книгу\n 5.Выйти\n");
+      int command = s.nextInt();
+
+      if (1==command) {
+         for(String state : states){
+            System.out.println(state);
+                }
+      } else if (2 == command) {
+          System.out.println("Введите номер книги которую надо добавить:");
+        int a = s.nextInt();
+        int Max = 5;
+        if(a<=Max){ 
+            System.out.println("Такой номер задействован");
+      }else{
+        System.out.println("Введите название книги которую надо добавить:");
+        String x= s.next();
+            states.add(a,x);
+        a= a++;
+        }
+      } else if (3==command) {
+        printTime();
+      } else if (4==command) {
+        System.out.println("Введите номер книги который надо удалить");
+        int number = s.nextInt();
+        states.remove(number);
+      } else if (5 == command) {
+            System.out.println("Пока.!");
+        break;
+      }else {
+        System.out.println("Неизвесная команда.Попробуйте ещё раз!!");
+      }
+    }	
+  }

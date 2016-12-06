@@ -2,20 +2,22 @@
 package javaapplication3;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
+
 
 public class JavaApplication3 {
 
      public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
 ArrayList<String> states = new ArrayList();
-        states.add("0.Книга 1");
-        states.add("1.Книга 2");
-        states.add("2.Книга 3");
-        states.add("3.Книга 4");
-        states.add("4.Книга 5");
-        states.add("5.Книга 6");
+        states.add("Книга 1");
+        states.add("Книга 2");
+        states.add("Книга 3");
+        states.add("Книга 4");
+        states.add("Книга 5");
+        states.add("Книга 6");
 
     while (true) {
 
@@ -23,25 +25,30 @@ ArrayList<String> states = new ArrayList();
       int command = s.nextInt();
 
       if (1==command) {
-         for(String state : states){
+          System.out.print("Что нужно сделать:\n1.А-я\n2.Я-а\n");
+          int Blue = s.nextInt();
+          if (1==Blue){Collections.sort(states, new Comparator<String>()
+       {public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+        }});
+          for(String state : states){
+            System.out.println(state);}}
+          else if (2==Blue)
+                {Collections.sort(states, new Comparator<String>()
+       {public int compare(String o1, String o2) {
+                return o2.compareTo(o1);
+        }});
+          for(String state : states){
             System.out.println(state);
-                }
-      } else if (2 == command) {
-          System.out.println("Введите номер книги которую надо добавить:");
-        int a = s.nextInt();
-        int Max = 5;
-        if(a<=Max){ 
-            System.out.println("Такой номер задействован");
-      }else{
+                }}}
+       else if (2 == command) {
         System.out.println("Введите название книги которую надо добавить:");
         String x= s.next();
-            states.add(a,x);
-        a= a++;
-        }
+            states.add(x);
       } else if (3==command) {
-        printTime();
+ 
       } else if (4==command) {
-        System.out.println("Введите номер книги который надо удалить");
+        System.out.println("Введите номер книги который надо удалить(если 1 книга=0)");
         int number = s.nextInt();
         states.remove(number);
       } else if (5 == command) {
@@ -49,6 +56,4 @@ ArrayList<String> states = new ArrayList();
         break;
       }else {
         System.out.println("Неизвесная команда.Попробуйте ещё раз!!");
-      }
-    }	
-  }
+      }}}}
